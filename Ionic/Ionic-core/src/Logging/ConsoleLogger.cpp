@@ -2,9 +2,6 @@
 #include <iostream>
 #include "windows.h"
 
-#define YELLOW 14
-#define GREEN 10
-
 namespace Ionic {
 	namespace Logging {
 		ConsoleLogger::ConsoleLogger()
@@ -21,8 +18,6 @@ namespace Ionic {
 			SetConsoleTextAttribute(consoleHandle, textColor);
 			std::cout << text;
 		}
-
-
 
 		void ConsoleLogger::LogLine(const char* text, int textColor)
 		{
