@@ -1,4 +1,5 @@
 #include "Window.h"
+#include "../Input/InputManager.h"
 
 
 namespace Ionic {
@@ -42,6 +43,8 @@ namespace Ionic {
 			}
 
 			glfwMakeContextCurrent(_window);
+			glfwSetWindowUserPointer(_window, this);
+			glfwSetKeyCallback(_window, Input::InputManager::KeyCallback);
 			return true;
 		}
 
