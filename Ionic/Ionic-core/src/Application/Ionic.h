@@ -5,12 +5,17 @@
 #include "../IonicDefinitions.h"
 #include "../Logging/Logger.h"
 #include "../Logging/ConsoleLogger.h"
+#include "../Input/InputManager.h"
 
-using namespace Ionic::Graphics;
-using namespace Ionic::Logging;
 
 namespace Ionic {
 	namespace Application {
+		using namespace Graphics;
+		using namespace Logging;
+		using namespace Input;
+
+
+
 		class Ionic
 		{
 		public:

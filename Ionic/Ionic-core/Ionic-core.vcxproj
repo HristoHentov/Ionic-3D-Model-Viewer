@@ -125,12 +125,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Application\Ionic.cpp" />
+    <ClCompile Include="src\Input\InputManager.cpp" />
     <ClCompile Include="src\Logging\ConsoleLogger.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Graphics\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Application\Ionic.h" />
+    <ClInclude Include="src\Input\InputManager.h" />
     <ClInclude Include="src\Logging\ConsoleLogger.h" />
     <ClInclude Include="src\IonicDefinitions.h" />
     <ClInclude Include="src\Logging\Logger.h" />

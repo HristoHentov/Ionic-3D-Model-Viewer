@@ -1,5 +1,6 @@
 #include "Ionic.h"
 
+
 namespace Ionic {
 	namespace Application {
 
@@ -43,11 +44,16 @@ namespace Ionic {
 			while (!_appWindow->IsClosed())
 			{
 				_appWindow->Update();
+				if (InputManager::IsKeyPressed(GLFW_KEY_SPACE))
+				{
+					_logger->LogLine("Space pressed!", TEXT_COLOR_YELLOW);
+				}
 			}
 		}
 
 		Ionic::~Ionic()
 		{
+			delete _appWindow;
 		}
 	}
 }
