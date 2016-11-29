@@ -48,6 +48,18 @@ namespace Ionic {
 				{
 					_logger->LogLine("Space pressed!", TEXT_COLOR_YELLOW);
 				}
+				if(InputManager::IsMousePressed(GLFW_MOUSE_BUTTON_MIDDLE))
+				{
+					_logger->LogLine("Scroll pressed!", TEXT_COLOR_GREEN);
+				}
+				if(InputManager::GetScrollOffset() != 0)
+				{
+					_logger->Log("Scroll Offset: ", TEXT_COLOR_RED);
+					_logger->LogLine(std::to_string(InputManager::GetScrollOffset()).c_str());
+				}
+
+				//_logger->LogLine(InputManager::GetMousePosition().c_str(), TEXT_COLOR_YELLOW);
+
 			}
 		}
 

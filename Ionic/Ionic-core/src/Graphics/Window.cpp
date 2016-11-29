@@ -30,6 +30,7 @@ namespace Ionic {
 		Window::~Window()
 		{
 			glfwDestroyWindow(_window);
+			glfwTerminate();
 		}
 
 		bool Window::Initialize()
@@ -44,7 +45,11 @@ namespace Ionic {
 
 			glfwMakeContextCurrent(_window);
 			glfwSetWindowUserPointer(_window, this);
+			
 			glfwSetKeyCallback(_window, Input::InputManager::KeyCallback);
+			glfwSetCursorPosCallback(_window, Input::InputManager::MousePositionCallback);
+			glfwSetMouseButtonCallback(_window, Input::InputManager::ButtonCallback);
+			glfwSetScrollCallback(_window, Input::InputManager::ScrollCallback);
 			return true;
 		}
 
