@@ -1,4 +1,7 @@
 #include "Ionic.h"
+#include "../Math/vec2.h"
+#include "../Math/vec3.h"
+#include "../Math/vec4.h"
 
 
 namespace Ionic {
@@ -37,6 +40,9 @@ namespace Ionic {
 			_logger->LogLine(INIT_SUCCSESS, TEXT_COLOR_GREEN);
 			_logger->Log(OPENGL_VERSION);
 			_logger->LogLine((char*)glGetString(GL_VERSION), TEXT_COLOR_GREEN);
+			_logger->Log(OPENGL_GPU);
+			_logger->LogLine((char*)glGetString(GL_RENDERER), TEXT_COLOR_GREEN);
+
 		}
 
 		void Ionic::Run()
@@ -46,7 +52,23 @@ namespace Ionic {
 				_appWindow->Update();
 				if (InputManager::IsKeyPressed(GLFW_KEY_SPACE))
 				{
-					_logger->LogLine("Space pressed!", TEXT_COLOR_YELLOW);
+					Math::vec4 x = Math::vec4(1.0f, 2.0f, 3.0f, 4.0f);
+					Math::vec4 y = Math::vec4(1.0f, 2.0f, 3.0f, 4.0f);
+					y += Math::vec4(1.0f, 1.0f, 1.0f, 1.0f);
+
+					Math::vec4 z = x + y;
+					std::cout << "=================" << std::endl;
+					std::cout << "x: " << x << std::endl;
+					std::cout << "y: " << y << std::endl;
+					std::cout << "z: " << z << std::endl;
+					std::cout << "-----------------" << std::endl;
+					z -= Math::vec4(1.0f, 1.0f, 1.0f, 1.0f);
+					std::cout << "x: " << x << std::endl;
+					std::cout << "y: " << y << std::endl;
+					std::cout << "z: " << z << std::endl;
+
+					std::cout << "=================" << std::endl;
+
 				}
 				if(InputManager::IsMousePressed(GLFW_MOUSE_BUTTON_MIDDLE))
 				{
@@ -57,6 +79,9 @@ namespace Ionic {
 					_logger->Log("Scroll Offset: ", TEXT_COLOR_RED);
 					_logger->LogLine(std::to_string(InputManager::GetScrollOffset()).c_str());
 				}
+
+			
+
 
 				//_logger->LogLine(InputManager::GetMousePosition().c_str(), TEXT_COLOR_YELLOW);
 

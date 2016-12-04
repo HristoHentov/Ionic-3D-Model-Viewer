@@ -17,8 +17,13 @@
 /* Error Messages*/
 #define GLFW_INIT_FAIL		"Error: GLFW Initialization failed."
 #define GLEW_INIT_FAIL		"Error: GLEW Initialization failed."
+/* END */
+
+
+/* Debug Strings*/
 #define INIT_SUCCSESS		"Initialization successfull."
 #define OPENGL_VERSION		"OpenGL Version: "
+#define OPENGL_GPU			"GPU: "
 /* END */
 
 /* General Constants */

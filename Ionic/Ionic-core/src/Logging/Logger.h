@@ -1,4 +1,5 @@
 #pragma once
+#include <ostream>
 
 namespace Ionic { namespace Logging {
 	
@@ -7,5 +8,8 @@ namespace Ionic { namespace Logging {
 	public:
 		virtual void Log(const char * text, int textColor = 15) = 0;
 		virtual void LogLine(const char * text, int textColor = 15) = 0;
+
+		virtual void Log(const std::ostream& text, int textColor = 15) = 0;
+		virtual void LogLine(const std::ostream& text, int textColor = 15) = 0;
 	};
 } }

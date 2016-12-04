@@ -6,6 +6,9 @@
     <ClCompile Include="src\Logging\ConsoleLogger.cpp" />
     <ClCompile Include="src\Application\Ionic.cpp" />
     <ClCompile Include="src\Input\InputManager.cpp" />
+    <ClCompile Include="src\Math\vec2.cpp" />
+    <ClCompile Include="src\Math\vec3.cpp" />
+    <ClCompile Include="src\Math\vec4.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Graphics\Window.h" />
@@ -14,5 +17,8 @@
     <ClInclude Include="src\IonicDefinitions.h" />
     <ClInclude Include="src\Application\Ionic.h" />
     <ClInclude Include="src\Input\InputManager.h" />
+    <ClInclude Include="src\Math\vec2.h" />
+    <ClInclude Include="src\Math\vec3.h" />
+    <ClInclude Include="src\Math\vec4.h" />
   </ItemGroup>
 </Project>

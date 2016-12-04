@@ -1,6 +1,5 @@
 #include "ConsoleLogger.h"
-#include <iostream>
-#include "windows.h"
+
 
 namespace Ionic {
 	namespace Logging {
@@ -23,6 +22,18 @@ namespace Ionic {
 		{
 			SetConsoleTextAttribute(consoleHandle, textColor);
 			std::cout << text << std::endl;
+		}
+
+		void ConsoleLogger::Log(const std::ostream& text, int textColor)
+		{
+			SetConsoleTextAttribute(consoleHandle, textColor);
+			std::cout << &text;
+		}
+
+		void ConsoleLogger::LogLine(const std::ostream& text, int textColor)
+		{
+			SetConsoleTextAttribute(consoleHandle, textColor);
+			std::cout << &text;
 		}
 	}
 }
