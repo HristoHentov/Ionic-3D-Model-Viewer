@@ -16,7 +16,6 @@ namespace Ionic {
 			{
 				elements[i] = 0.0f;
 			}
-
 			elements[0] = diagonal;
 			elements[4] = diagonal;
 			elements[8] = diagonal;

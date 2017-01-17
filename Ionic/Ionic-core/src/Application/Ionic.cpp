@@ -3,7 +3,7 @@
 #include "../Math/mat2.h"
 #include "../Math/mat3.h"
 #include "../Math/mat4.h"
-
+#include "../../../Ionic-fileloader/src/FileLoader.h"
 
 namespace Ionic {
 	namespace Application {
@@ -93,6 +93,12 @@ namespace Ionic {
 					_logger->LogLine(test3.ToString(), TEXT_COLOR_YELLOW);
 
 				}
+				if(InputManager::IsKeyPressed(GLFW_KEY_T))
+				{
+					std::string result = FileLoader::ReadTextFile("test.txt");
+					_logger->LogLine(result, TEXT_COLOR_GREEN);
+				}
+				
 
 				//_logger->LogLine(InputManager::GetMousePosition().c_str(), TEXT_COLOR_YELLOW);
 
