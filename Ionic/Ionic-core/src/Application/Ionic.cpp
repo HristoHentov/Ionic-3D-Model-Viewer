@@ -83,26 +83,15 @@ namespace Ionic {
 				}
 				if(InputManager::IsKeyPressed(GLFW_KEY_M))
 				{
-					system("CLS");
+					
 					mat4 test(1.0f);
 					//test = mat4::Rotation(45, vec3(0, 1, 0));
 					test = mat4::Scale(vec3(2, 3, 4)) * mat4::Identity();
 					test *= mat4(1.0f);
-					for (int r = 0; r < 4; r++)
-					{
-						for (int c = 0; c < 4; c++)
-						{
-							std::cout << test.elements[r * 4 + c] << " ";
-						}
-
-						std::cout << std::endl;
-					}
-					
-					std::cout << "=============END=============" << std::endl;
+					_logger->LogLine(test.ToString(), TEXT_COLOR_YELLOW);
 
 				}
 
-		
 				//_logger->LogLine(InputManager::GetMousePosition().c_str(), TEXT_COLOR_YELLOW);
 
 			}

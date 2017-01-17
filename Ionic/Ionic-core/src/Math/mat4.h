@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cstring>
+#include <sstream>
 #include "vec3.h"
 #include <math.h>
 
@@ -34,6 +35,8 @@ namespace Ionic { namespace Math {
 			static mat4 Translation(const vec3 translation);
 			static mat4 Rotation(float angle, const vec3 axis);
 			static mat4 Scale(const vec3 scale);
+
+			std::string ToString();
 		};
 
 	}

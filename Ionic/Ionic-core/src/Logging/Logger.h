@@ -11,5 +11,8 @@ namespace Ionic { namespace Logging {
 
 		virtual void Log(const std::ostream& text, int textColor = 15) = 0;
 		virtual void LogLine(const std::ostream& text, int textColor = 15) = 0;
+
+		virtual void Log(std::string text, int textColor = 15) = 0;
+		virtual void LogLine(std::string text, int textColor = 15) = 0;
 	};
 } }

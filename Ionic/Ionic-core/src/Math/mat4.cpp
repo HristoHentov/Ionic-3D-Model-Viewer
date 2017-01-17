@@ -285,5 +285,22 @@ namespace Ionic { namespace Math
 			return result;
 		}
 
+
+		std::string mat4::ToString()
+		{
+			std::stringstream output;
+			output << "-Mat4x4-" << std::endl;
+			for (int r = 0; r < 4; ++r)
+			{
+				for (int c = 0; c < 4; ++c)
+				{
+					output << elements[r * 4 + c] << " ";
+				}
+				output << std::endl;
+			}
+			output << "--------" << std::endl;
+
+			return output.str();
+		}
 	}
 }
