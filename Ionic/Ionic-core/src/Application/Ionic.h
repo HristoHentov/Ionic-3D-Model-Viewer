@@ -8,12 +8,11 @@
 #include "../Input/InputManager.h"
 
 
-namespace Ionic {
-	namespace Application {
+
+namespace Ionic { namespace Application {
 		using namespace Graphics;
 		using namespace Logging;
 		using namespace Input;
-
 
 
 		class Ionic
@@ -23,7 +22,6 @@ namespace Ionic {
 			void Initialize();
 			void Run();
 			~Ionic();
-
 
 		private:
 			Window* _appWindow;

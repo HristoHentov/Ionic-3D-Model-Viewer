@@ -9,6 +9,9 @@
     <ClCompile Include="src\Math\vec2.cpp" />
     <ClCompile Include="src\Math\vec3.cpp" />
     <ClCompile Include="src\Math\vec4.cpp" />
+    <ClCompile Include="src\Math\mat2.cpp" />
+    <ClCompile Include="src\Math\mat3.cpp" />
+    <ClCompile Include="src\Math\mat4.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Graphics\Window.h" />
@@ -20,5 +23,9 @@
     <ClInclude Include="src\Math\vec2.h" />
     <ClInclude Include="src\Math\vec3.h" />
     <ClInclude Include="src\Math\vec4.h" />
+    <ClInclude Include="src\Math\mat2.h" />
+    <ClInclude Include="src\Math\mat3.h" />
+    <ClInclude Include="src\Math\mat4.h" />
+    <ClInclude Include="src\Math\IonicMath.h" />
   </ItemGroup>
 </Project>
