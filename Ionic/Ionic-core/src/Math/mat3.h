@@ -1,4 +1,6 @@
 #include <cstring>
+#include <string>
+#include <sstream>
 #pragma once
 
 typedef unsigned short ushort;
@@ -25,6 +27,8 @@ namespace Ionic {
 			friend mat3 operator-(mat3& left, const mat3& right);
 			friend mat3 operator*(mat3& left, const mat3& right);
 			friend mat3 operator*(mat3& left, const float right);
+
+			std::string ToString();
 
 		};
 	}

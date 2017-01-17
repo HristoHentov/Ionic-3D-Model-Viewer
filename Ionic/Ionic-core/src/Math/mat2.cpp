@@ -78,6 +78,7 @@ namespace Ionic {
 		{
 			return mat2(1.0);
 		}
+
 		mat2& mat2::Inverse()
 		{
 			float temp = this->elements[0];
@@ -87,6 +88,23 @@ namespace Ionic {
 			this->elements[3] = temp;
 			
 			return *this;
+		}
+
+		std::string mat2::ToString()
+		{
+			std::stringstream output;
+			output << "-Mat2x2-" << std::endl;
+			for (int r = 0; r < 2; ++r)
+			{
+				for (int c = 0; c < 2; ++c)
+				{
+					output << elements[r * 2 + c] << " ";
+				}
+				output << std::endl;
+			}
+			output << "--------" << std::endl;
+
+			return output.str();
 		}
 	}
 }

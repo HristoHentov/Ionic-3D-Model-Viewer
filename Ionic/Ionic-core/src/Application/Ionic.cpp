@@ -83,12 +83,14 @@ namespace Ionic {
 				}
 				if(InputManager::IsKeyPressed(GLFW_KEY_M))
 				{
-					
+					mat2 test2(1.0f);
+					mat3 test3(1.0f);
 					mat4 test(1.0f);
-					//test = mat4::Rotation(45, vec3(0, 1, 0));
 					test = mat4::Scale(vec3(2, 3, 4)) * mat4::Identity();
 					test *= mat4(1.0f);
 					_logger->LogLine(test.ToString(), TEXT_COLOR_YELLOW);
+					_logger->LogLine(test2.ToString(), TEXT_COLOR_YELLOW);
+					_logger->LogLine(test3.ToString(), TEXT_COLOR_YELLOW);
 
 				}
 

@@ -1,4 +1,6 @@
 #include <cstring>
+#include <string>
+#include <sstream>
 #pragma once
 
 typedef unsigned short ushort;
@@ -22,5 +24,8 @@ struct mat2
 	 
 	mat2& Inverse();
 	static mat2 Identity();
+
+	std::string ToString();
+
 };
 } }

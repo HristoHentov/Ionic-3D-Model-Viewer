@@ -29,7 +29,7 @@ namespace Ionic { namespace Math
 		bool operator!=(const vec3& other);
 
 		friend std::ostream& operator<<(std::ostream& os ,const vec3& vector);
-		std::string ToString();
+		std::string ToString() const;
 	};
 
 } }

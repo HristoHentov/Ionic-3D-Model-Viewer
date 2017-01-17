@@ -115,5 +115,22 @@ namespace Ionic {
 			return minorsMatrix * (1 / determinant);
 			
 		}
+
+		std::string mat3::ToString()
+		{
+			std::stringstream output;
+			output << "-Mat3x3-" << std::endl;
+			for (int r = 0; r < 3; ++r)
+			{
+				for (int c = 0; c < 3; ++c)
+				{
+					output << elements[r * 3 + c] << " ";
+				}
+				output << std::endl;
+			}
+			output << "--------" << std::endl;
+
+			return output.str();
+		}
 	}
 }

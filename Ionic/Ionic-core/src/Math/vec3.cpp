@@ -109,7 +109,7 @@ namespace Ionic { namespace Math
 		return os;
 	}
 
-	std::string vec3::ToString()
+	std::string vec3::ToString() const
 	{
 		std::string x = std::to_string(this->x);
 		std::string y = std::to_string(this->y);
