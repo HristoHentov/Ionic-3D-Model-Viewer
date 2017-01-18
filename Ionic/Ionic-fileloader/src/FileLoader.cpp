@@ -21,4 +21,10 @@ namespace FileLoader {
 
 		return result;
 	}
+
+	bool CheckFile(const char * path)
+	{
+		struct stat st;
+		return stat(path, &st) == 0;
+	}
 }
