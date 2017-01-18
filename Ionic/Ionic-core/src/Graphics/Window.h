@@ -11,6 +11,7 @@ namespace Ionic {
 		public:
 			Window(int width, int height, const char * title);
 			void Update();
+			void Clear();
 			bool IsClosed() const;
 			~Window();
 
