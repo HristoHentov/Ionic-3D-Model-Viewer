@@ -17,6 +17,8 @@
 /* Error Messages*/
 #define GLFW_INIT_FAIL		"Error: GLFW Initialization failed."
 #define GLEW_INIT_FAIL		"Error: GLEW Initialization failed."
+#define VSHADER_PATH_FAIL	"Vertex shader path is invalid, please check directory."
+#define FSHADER_PATH_FAIL	"Fragment shader path is invalid, please check directory."
 /* END */
 
 

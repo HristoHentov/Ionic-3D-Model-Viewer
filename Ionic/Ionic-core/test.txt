@@ -1,7 +1,0 @@
-Hello and welcome!
-
-This is a test to see if my program is working properly.
-I also wanna see if 	tabs	are		working.
-
-
-Cheers :) !@#$%^&*()

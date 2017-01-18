@@ -4,6 +4,7 @@
 #include "../Math/mat3.h"
 #include "../Math/mat4.h"
 #include "../../../Ionic-fileloader/src/FileLoader.h"
+#include "../Graphics/Shader.h"
 
 namespace Ionic {
 	namespace Application {
@@ -38,6 +39,30 @@ namespace Ionic {
 				return;
 			}
 			glewExperimental = true;
+			
+			glClearColor(0.15f, 0.15f, 0.15f, 1.0f);
+
+
+			GLfloat vertecies[] = 
+			{
+				-0.5f,-0.5f, 0.0f,
+				-0.5f, 0.5f, 0.0f,
+				0.5f, 0.5f, 0.0f,
+				0.5f, 0.5f, 0.0f,
+				0.5f, -0.5f, 0.0f,
+				-0.5f,-0.5f, 0.0f,
+			};
+
+			GLuint vbo;
+			glGenBuffers(1, &vbo);
+			glBindBuffer(GL_ARRAY_BUFFER, vbo);
+			glBufferData(GL_ARRAY_BUFFER, sizeof(vertecies), vertecies, GL_STATIC_DRAW);
+			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
+			glEnableVertexAttribArray(0);
+			
+			_shader = new Shader("src/Graphics/vShader.txt", "src/Graphics/fShader.txt");
+			_shader->Build();
+			_shader->Enable();
 
 			_logger->LogLine(INIT_SUCCSESS, TEXT_COLOR_GREEN);
 			_logger->Log(OPENGL_VERSION);
@@ -51,6 +76,8 @@ namespace Ionic {
 		{
 			while (!_appWindow->IsClosed())
 			{
+				_appWindow->Clear();
+				glDrawArrays(GL_TRIANGLES, 0, 6);
 				_appWindow->Update();
 				if (InputManager::IsKeyPressed(GLFW_KEY_SPACE))
 				{
@@ -98,6 +125,7 @@ namespace Ionic {
 					std::string result = FileLoader::ReadTextFile("test.txt");
 					_logger->LogLine(result, TEXT_COLOR_GREEN);
 				}
+
 				
 
 				//_logger->LogLine(InputManager::GetMousePosition().c_str(), TEXT_COLOR_YELLOW);

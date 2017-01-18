@@ -12,6 +12,7 @@
     <ClCompile Include="src\Math\mat2.cpp" />
     <ClCompile Include="src\Math\mat3.cpp" />
     <ClCompile Include="src\Math\mat4.cpp" />
+    <ClCompile Include="src\Graphics\Shader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Graphics\Window.h" />
@@ -27,5 +28,10 @@
     <ClInclude Include="src\Math\mat3.h" />
     <ClInclude Include="src\Math\mat4.h" />
     <ClInclude Include="src\Math\IonicMath.h" />
+    <ClInclude Include="src\Graphics\Shader.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="src\Graphics\fShader.txt" />
+    <Text Include="src\Graphics\vShader.txt" />
   </ItemGroup>
 </Project>
