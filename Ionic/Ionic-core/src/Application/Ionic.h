@@ -9,6 +9,9 @@
 #include <GLEW/glew.h>
 #include <GLFW/glfw3.h>
 #include "../Graphics/Shader.h"
+#include "../Graphics/Buffer.h"
+#include "../Graphics/VertexArray.h"
+#include "../Graphics/IndexBuffer.h"
 
 
 namespace Ionic { namespace Application {
@@ -30,6 +33,8 @@ namespace Ionic { namespace Application {
 			ConsoleLogger _cLogger;
 			Logger * _logger;
 			Shader * _shader;
+			//Buffer * _vbo;
+			//IndexBuffer _ibo;
 		};
 
 	}

@@ -124,6 +124,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Graphics\IndexBuffer.cpp" />
+    <ClCompile Include="src\Graphics\Buffer.cpp" />
     <ClCompile Include="src\Graphics\Shader.cpp" />
     <ClCompile Include="src\Math\mat4.cpp" />
     <ClCompile Include="src\Math\mat3.cpp" />
@@ -136,8 +138,11 @@
     <ClCompile Include="src\Math\vec4.cpp" />
     <ClCompile Include="src\Math\vec3.cpp" />
     <ClCompile Include="src\Math\vec2.cpp" />
+    <ClCompile Include="src\Graphics\VertexArray.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Graphics\IndexBuffer.h" />
+    <ClInclude Include="src\Graphics\Buffer.h" />
     <ClInclude Include="src\Graphics\Shader.h" />
     <ClInclude Include="src\Math\mat4.h" />
     <ClInclude Include="src\Math\mat3.h" />
@@ -152,6 +157,7 @@
     <ClInclude Include="src\Math\vec4.h" />
     <ClInclude Include="src\Math\vec3.h" />
     <ClInclude Include="src\Math\vec2.h" />
+    <ClInclude Include="src\Graphics\VertexArray.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Ionic-fileloader\Ionic-fileloader.vcxproj">
