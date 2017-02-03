@@ -1,8 +1,6 @@
 #include "VertexArray.h"
 
-
-namespace Ionic {
-	namespace Graphics {
+namespace Ionic { namespace Graphics {
 
 		VertexArray::VertexArray()
 		{
@@ -16,7 +14,7 @@ namespace Ionic {
 			buffer->Enable();
 			glVertexAttribPointer(index, buffer->GetComponentCount(), GL_FLOAT, GL_FALSE,0, 0);
 			glEnableVertexAttribArray(index);
-
+			///TODO : Push buffers into the vector
 			buffer->Disable();
 			Unbind();
 		}
@@ -30,9 +28,6 @@ namespace Ionic {
 		{
 			glBindVertexArray(0);
 		}
-
-
-
 
 		VertexArray::~VertexArray()
 		{

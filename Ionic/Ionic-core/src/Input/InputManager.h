@@ -1,6 +1,7 @@
 #pragma once
 #include "../IonicDefinitions.h"
 #include "../Graphics/Window.h"
+#include "../Math/vec2.h"
 #include <string>
 
 namespace Ionic { namespace Input
@@ -13,7 +14,7 @@ namespace Ionic { namespace Input
 		static bool IsKeyPressed(int keycode);
 		static bool IsMousePressed(int keycode);
 		static double GetScrollOffset();
-		static std::string GetMousePosition(); //TODO: Make sure this returns a vec2, once 
+		static Math::vec2 GetMousePosition();
 
 	private:
 		static bool _keys[TOTAL_KEYS];

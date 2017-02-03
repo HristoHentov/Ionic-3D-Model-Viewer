@@ -1,10 +1,9 @@
 #pragma once
+#include <iostream>
 #include <GLEW/glew.h>
 #include <GLFW/glfw3.h>
-#include <iostream>
 
-namespace Ionic {
-	namespace Graphics {
+namespace Ionic { namespace Graphics {
 
 		class Window
 		{
@@ -12,6 +11,7 @@ namespace Ionic {
 			Window(int width, int height, const char * title);
 			void Update();
 			void Clear();
+			void Close();
 			bool IsClosed() const;
 			~Window();
 
@@ -22,8 +22,6 @@ namespace Ionic {
 			GLFWwindow * _window;
 		private:
 			bool Initialize();
-
-
 		};
 	}
 }

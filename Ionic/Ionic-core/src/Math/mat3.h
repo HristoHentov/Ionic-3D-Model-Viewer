@@ -3,7 +3,10 @@
 #include <sstream>
 #pragma once
 
+#ifndef ushort
 typedef unsigned short ushort;
+#endif
+
 
 namespace Ionic {
 	namespace Math

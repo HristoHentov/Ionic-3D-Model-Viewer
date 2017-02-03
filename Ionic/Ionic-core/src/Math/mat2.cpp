@@ -1,6 +1,5 @@
 #include "mat2.h"
-namespace Ionic {
-	namespace Math {
+namespace Ionic { namespace Math {
 
 		mat2::mat2()
 		{
@@ -13,10 +12,8 @@ namespace Ionic {
 			{
 				elements[i] = 0.0f;
 			}
-
 			elements[0] = diagonal;
 			elements[3] = diagonal;
-			//elements[2 * 2] = { scalar};
 		}
 
 		mat2& mat2::Add(const mat2& other)

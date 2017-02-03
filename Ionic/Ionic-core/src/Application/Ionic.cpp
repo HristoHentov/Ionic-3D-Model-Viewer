@@ -1,13 +1,4 @@
 #include "Ionic.h"
-#include "../Math/vec4.h"
-#include "../Math/mat2.h"
-#include "../Math/mat3.h"
-#include "../Math/mat4.h"
-#include "../../../Ionic-fileloader/src/FileLoader.h"
-#include "../Graphics/Shader.h"
-#include "../Graphics/VertexArray.h"
-#include "../Graphics/Buffer.h"
-#include "../Graphics/IndexBuffer.h"
 
 namespace Ionic {
 	namespace Application {
@@ -45,42 +36,6 @@ namespace Ionic {
 
 			glClearColor(0.15f, 0.15f, 0.15f, 1.0f);
 
-			/// Get Rid of this - only for tesiting.
-			/*
-			GLfloat vertecies[] =
-			{
-				-0.5f,-0.5f, 0.0f,
-				-0.5f, 0.5f, 0.0f,
-				0.5f, 0.5f, 0.0f,
-				0.5f, 0.5f, 0.0f,
-				0.5f, -0.5f, 0.0f,
-				-0.5f,-0.5f, 0.0f,
-			};
-
-			GLuint vbo;
-			glGenBuffers(1, &vbo);
-			glBindBuffer(GL_ARRAY_BUFFER, vbo);
-			glBufferData(GL_ARRAY_BUFFER, sizeof(vertecies), vertecies, GL_STATIC_DRAW);
-			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
-			glEnableVertexAttribArray(0);
-			*/
-/* This should work
-			GLfloat meshVertecies[] =
-			{	-0.5f, -0.5f,  0.0f,
-				-0.5f,  0.5f,  0.0f,
-				 0.5f,  0.5f,  0.0f,
-				 0.5f, -0.5f,  0.0f
-			};
-
-			GLushort meshIndecies[] =
-			{
-				0, 1, 2,
-				2, 3, 0
-			};
-
-			_vbo = new Buffer(meshVertecies, 4 * 3, 3);
-			_ibo = IndexBuffer(meshIndecies, 6);
-			*/
 			_shader = new Shader("src/Graphics/vShader.txt", "src/Graphics/fShader.txt");
 			_shader->Build();
 			_shader->Enable();
@@ -90,7 +45,6 @@ namespace Ionic {
 			_logger->LogLine((char*)glGetString(GL_VERSION), TEXT_COLOR_GREEN);
 			_logger->Log(OPENGL_GPU);
 			_logger->LogLine((char*)glGetString(GL_RENDERER), TEXT_COLOR_GREEN);
-
 		}
 
 		void Ionic::Run()
@@ -98,8 +52,8 @@ namespace Ionic {
 			GLfloat meshVertecies[] =
 			{ -0.5f, -0.5f,  0.0f,
 				-0.5f,  0.5f,  0.0f,
-				0.5f,  0.5f,  0.0f,
-				0.5f, -0.5f,  0.0f
+				 0.5f,  0.5f,  0.0f,
+				 0.5f, -0.5f,  0.0f
 			};
 
 			///Used for testing multiple buffers
@@ -124,15 +78,20 @@ namespace Ionic {
 
 			vao.Add(vbo, 0);
 			vao.Add(cbo, 1);
+
+			unsigned long ticks = 0;
+			_shader->setUniformMat4("pMatrix", Math::mat4::Rotation(0, vec3(1, 0, 1)));
 			while (!_appWindow->IsClosed())
 			{
+				ticks++;
+
+				_shader->setUniformMat4("pMatrix", Math::mat4::Rotation((10 + (ticks / 20)), vec3(0, 0, 1)));
+				_shader->setUniform2f("mouse_pos", InputManager::GetMousePosition());
 				_appWindow->Clear();
-				//glDrawArrays(GL_TRIANGLES, 0, 6); Delete along with other testing stuff
 				vao.Bind();
 				ibo.Enable();
 				glDrawElements(GL_TRIANGLES, ibo.GetSize(), GL_UNSIGNED_SHORT, 0);
 				_appWindow->Update();
-
 				ibo.Disable();
 				vao.Unbind();
 
@@ -182,9 +141,10 @@ namespace Ionic {
 					std::string result = FileLoader::ReadTextFile("test.txt");
 					_logger->LogLine(result, TEXT_COLOR_GREEN);
 				}
-
-				//_logger->LogLine(InputManager::GetMousePosition().c_str(), TEXT_COLOR_YELLOW);
-
+				if (InputManager::IsKeyPressed(GLFW_KEY_ESCAPE))
+				{
+					_appWindow->Close();
+				}
 			}
 		}
 

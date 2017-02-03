@@ -4,7 +4,6 @@ namespace Ionic { namespace Graphics {
 
 		IndexBuffer::IndexBuffer()
 		{
-			
 		}
 
 		IndexBuffer::IndexBuffer(GLushort * data, GLushort size)

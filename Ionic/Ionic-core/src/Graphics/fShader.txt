@@ -3,6 +3,8 @@
 layout (location = 0) out vec4 color;
 in vec4 pos;
 
+uniform vec2 mouse_pos;
+
 in DATA
 {
 	vec4 pos;
@@ -11,7 +13,9 @@ in DATA
 
 void main()
 {
-	float i = 1.0 / length(fs_in.pos.xy - (vec2(0, 0)));
+
+	float i = 0.5 / length(fs_in.pos.xy - ((mouse_pos - vec2(640, 360)) / vec2(320, -180)));
 	//color = (vec4(0.2, 0.3, 0.8, 1.0)) * i;
-	color = (fs_in.col); 
+	color = (fs_in.col) * i; 
+ 
 }

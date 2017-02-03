@@ -1,6 +1,5 @@
 #include "mat3.h"
-namespace Ionic {
-	namespace Math {
+namespace Ionic { namespace Math {
 
 		mat3::mat3()
 		{

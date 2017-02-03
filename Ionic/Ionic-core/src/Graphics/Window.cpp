@@ -2,10 +2,7 @@
 #include "../Input/InputManager.h"
 
 
-namespace Ionic {
-	namespace Graphics {
-
-
+namespace Ionic { namespace Graphics {
 		Window::Window(int width, int height, const char * title)
 		{
 			_width = width;
@@ -20,7 +17,6 @@ namespace Ionic {
 		{
 			glfwSwapBuffers(_window);
 			glfwPollEvents();
-
 		}
 
 		void Window::Clear()
@@ -31,6 +27,11 @@ namespace Ionic {
 		bool Window::IsClosed() const
 		{
 			return this -> _closed;
+		}
+
+		void Window::Close()
+		{
+			this->_closed = true;
 		}
 
 		Window::~Window()
@@ -58,10 +59,5 @@ namespace Ionic {
 			glfwSetScrollCallback(_window, Input::InputManager::ScrollCallback);
 			return true;
 		}
-
-
-
-		
-
 	}
 }

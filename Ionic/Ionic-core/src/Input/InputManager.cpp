@@ -19,7 +19,6 @@ namespace Ionic { namespace Input
 		{
 			_keys[i] = false;
 		}
-		//_keys[TOTAL_KEYS] = { false };
 		_buttons[TOTAL_BUTTONS] = { false };
 		_scrollY = 0.0f;
 	}
@@ -51,13 +50,9 @@ namespace Ionic { namespace Input
 		return _scrollY;
 	}
 
-	std::string InputManager::GetMousePosition()
+	Math::vec2 InputManager::GetMousePosition()
 	{
-		// return new vec2(_mouseX, _mouseY);
-		std::string x = std::to_string(_mouseX);
-		std::string y = std::to_string(_mouseY);
-
-		return std::string("X: " +x + " Y: " + y);
+		return Math::vec2(_mouseX, _mouseY);
 	}
 
 	//TODO : the Window* in all the callbacks is redundant, check if it will be used for anything and if not, remove it.
