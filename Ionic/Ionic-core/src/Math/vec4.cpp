@@ -59,6 +59,12 @@ namespace Ionic { namespace Math
 		return *this;
 	}
 
+	float vec4::Dot(const vec4& other) const
+	{
+		return x * other.x + y * other.y + z * other.z + w * other.w;
+	}
+
+
 	vec4 operator+(vec4 left, const vec4& right)
 	{
 		return left.Add(right);

@@ -205,16 +205,38 @@ namespace Ionic { namespace Math
 			return *this;
 		}
 
+		mat4 mat4::LookAt(const vec3& camera, const vec3& object, const vec3& up)
+		{
+			mat4 result = mat4::Identity();
+			vec3 f = (object - camera).Normalize();
+			vec3 s = f.Cross(up.Normalize());
+			vec3 u = s.Cross(f);
+
+			result.elements[0 + 0 * 4] = s.x;
+			result.elements[0 + 1 * 4] = s.y;
+			result.elements[0 + 2 * 4] = s.z;
+
+			result.elements[1 + 0 * 4] = u.x;
+			result.elements[1 + 1 * 4] = u.y;
+			result.elements[1 + 2 * 4] = u.z;
+
+			result.elements[2 + 0 * 4] = -f.x;
+			result.elements[2 + 1 * 4] = -f.y;
+			result.elements[2 + 2 * 4] = -f.z;
+
+			return result * mat4::Translation(vec3(-camera.x, -camera.y, -camera.z));
+		}
+
 		mat4 mat4::Perspective(float near, float far, float fov, float aspectRatio)
 		{
-			mat4 perspective;
+			mat4 perspective(1.0);
 			
-			float rads = (fov / 2) * (3.1415f / 180.0f);
-			perspective.elements[0 * 4 + 0] = 1.0f / tan(rads);
-			perspective.elements[1 * 4 + 1] = 1.0f / tan(rads) / aspectRatio;
+			float rads = (0.5 * fov) * (3.1415f / 180.0f);
+			perspective.elements[0 * 4 + 0] = 1.0f / tan(rads) / aspectRatio;
+			perspective.elements[1 * 4 + 1] = 1.0f / tan(rads);
 			perspective.elements[2 * 4 + 2] = (near + far) / (near - far);
 			perspective.elements[2 * 4 + 3] = 2.0f * (far * near) / (near - far);
-			perspective.elements[3 * 4 + 2] = 1.0f; // might need to be -1.0f
+			perspective.elements[3 * 4 + 2] = -1.0f;
 
 			return perspective;
  		}
@@ -256,6 +278,7 @@ namespace Ionic { namespace Math
 
 		mat4 mat4::Rotation(float angle, const vec3 axis)
 		{
+			
 			mat4 result;
 
 			float rads = angle * (3.141593f / 180.0f);
@@ -268,17 +291,17 @@ namespace Ionic { namespace Math
 			float y = axis.y;
 			float z = axis.z;
 
-			result.elements[0 * 4 + 0] = x * x * c + cosA;
-			result.elements[0 * 4 + 1] = x * y * c - z * sinA;
-			result.elements[0 * 4 + 2] = x * z * c + y * sinA;
+			result.elements[0 * 4 + 0] = x * x * c + cosA;		// 0
+			result.elements[0 * 4 + 1] = x * y * c - z * sinA; // 1
+			result.elements[0 * 4 + 2] = x * z * c + y * sinA; // 2
 
-			result.elements[1 * 4 + 0] = y * x * c + z * sinA;
-			result.elements[1 * 4 + 1] = y * y * c + cosA;
-			result.elements[1 * 4 + 2] = y * z * c - x * sinA;
-
-			result.elements[2 * 4 + 0] = x * z * c - y * sinA;
-			result.elements[2 * 4 + 1] = y * z * c + x * sinA;
-			result.elements[2 * 4 + 2] = z * z * c + cosA;
+			result.elements[1 * 4 + 0] = y * x * c + z * sinA; // 4
+			result.elements[1 * 4 + 1] = y * y * c + cosA;     // 5
+			result.elements[1 * 4 + 2] = y * z * c - x * sinA; // 6
+			 
+			result.elements[2 * 4 + 0] = z * x * c - y * sinA; // 8
+			result.elements[2 * 4 + 1] = z * y * c + x * sinA; // 9
+			result.elements[2 * 4 + 2] = z * z * c + cosA; // 10
 
 			result.elements[3 * 4 + 3] = 1.0f;
 

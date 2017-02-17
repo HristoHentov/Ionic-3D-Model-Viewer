@@ -50,8 +50,15 @@ namespace Ionic { namespace Graphics {
 				return false;
 			}
 
+			//glViewport(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
+
 			glfwMakeContextCurrent(_window);
 			glfwSetWindowUserPointer(_window, this);
+
+			glEnable(GL_DEPTH_TEST);
+			//glEnable(GL_CULL_FACE);
+			//glCullFace(GL_BACK);
+			//glDepthFunc(GL_LESS);
 			
 			glfwSetKeyCallback(_window, Input::InputManager::KeyCallback);
 			glfwSetCursorPosCallback(_window, Input::InputManager::MousePositionCallback);

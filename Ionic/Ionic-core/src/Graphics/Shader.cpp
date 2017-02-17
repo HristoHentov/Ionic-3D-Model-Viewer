@@ -89,8 +89,7 @@ namespace Ionic {
 
 		void Shader::setUniform1f(const GLchar* uName, float data) const
 		{
-			glUniform1i(GetULocation(uName), data);
-
+			glUniform1f(GetULocation(uName), data);
 		}
 
 		void Shader::setUniform2f(const GLchar* uName, const Math::vec2& data) const
@@ -113,7 +112,7 @@ namespace Ionic {
 
 		void Shader::setUniformMat4(const GLchar* uName, const Math::mat4& data) const
 		{
-			glUniformMatrix4fv(GetULocation(uName), 1, GL_FALSE, data.elements);
+			glUniformMatrix4fv(GetULocation(uName), 1, GL_TRUE, data.elements);
 		}
 
 		Shader::~Shader()

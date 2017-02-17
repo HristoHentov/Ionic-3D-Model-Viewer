@@ -29,6 +29,8 @@ namespace Ionic { namespace Math
 		bool operator==(const vec4& other);
 		bool operator!=(const vec4& other);
 
+		float Dot(const vec4& other) const;
+
 		friend std::ostream& operator<<(std::ostream& os ,const vec4& vector);
 		std::string ToString() const;
 	};

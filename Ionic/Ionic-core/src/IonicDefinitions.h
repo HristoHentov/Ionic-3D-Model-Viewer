@@ -33,4 +33,10 @@
 #define TOTAL_BUTTONS		32
 /* END */
 
+/* Convention String */
+#define DIFF_TEX_CONVENTION	"texture_diffuse"
+#define SPEC_TEX_CONVENTION	"texture_specular"
+/* END */
+
+
 

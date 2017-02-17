@@ -1,21 +1,26 @@
 #version 330
 
-layout(location = 0) in vec4 position;
-layout(location = 1) in vec4 color;
+layout(location = 0) in vec3 position;
+//layout(location = 1) in vec3 color;
+layout(location = 2) in vec2 texCoord;
 
-uniform mat4 pMatrix;
-uniform mat4 vwMatrix = mat4(1.0);
-uniform mat4 mlMatrix = mat4(1.0);
+uniform mat4 projection = mat4(1.0);
+uniform mat4 view		= mat4(1.0);
+uniform mat4 model		= mat4(1.0);
 
+out vec2 TexCoord;
 out DATA
 {
 	vec4 pos;
-	vec4 col;
+	vec3 col;
+
 } vs_out;
+
 
 void main()
 {
-	gl_Position = position * pMatrix;
-	vs_out.pos = position * pMatrix;
-	vs_out.col = color;
+	gl_Position = projection * view * model * vec4(position, 1.0);
+	vs_out.pos = projection * view * model * vec4(position, 1.0);
+	vs_out.col = vec3(1.0, 1.0, 1.0);
+	TexCoord = vec2(texCoord.x, 1.0f - texCoord.y);
 }

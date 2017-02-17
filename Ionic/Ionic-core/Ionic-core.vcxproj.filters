@@ -16,6 +16,10 @@
     <ClCompile Include="src\Graphics\Buffer.cpp" />
     <ClCompile Include="src\Graphics\IndexBuffer.cpp" />
     <ClCompile Include="src\Graphics\VertexArray.cpp" />
+    <ClCompile Include="src\Utils\FPSCounter.cpp" />
+    <ClCompile Include="src\Graphics\Mesh.cpp" />
+    <ClCompile Include="src\Graphics\Model.cpp" />
+    <ClCompile Include="src\Graphics\FPSCamera.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Graphics\Window.h" />
@@ -35,6 +39,11 @@
     <ClInclude Include="src\Graphics\Buffer.h" />
     <ClInclude Include="src\Graphics\IndexBuffer.h" />
     <ClInclude Include="src\Graphics\VertexArray.h" />
+    <ClInclude Include="src\Utils\FPSCounter.h" />
+    <ClInclude Include="src\Graphics\Mesh.h" />
+    <ClInclude Include="src\Graphics\Model.h" />
+    <ClInclude Include="src\Graphics\Camera.h" />
+    <ClInclude Include="src\Graphics\FPSCamera.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="src\Graphics\fShader.txt" />

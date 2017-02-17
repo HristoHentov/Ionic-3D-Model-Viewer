@@ -1,21 +1,27 @@
 #version 330
 
 layout (location = 0) out vec4 color;
+
 in vec4 pos;
+in vec2 TexCoord;
 
 uniform vec2 mouse_pos;
+uniform sampler2D ourTexture;
+uniform sampler2D ourTexture2;
 
 in DATA
 {
 	vec4 pos;
-	vec4 col;
+	vec3 col;
 } fs_in;
 
 void main()
 {
 
-	float i = 0.5 / length(fs_in.pos.xy - ((mouse_pos - vec2(640, 360)) / vec2(320, -180)));
-	//color = (vec4(0.2, 0.3, 0.8, 1.0)) * i;
-	color = (fs_in.col) * i; 
+	float i = 2 / length(fs_in.pos.xy - ((mouse_pos - vec2(256, 256)) / vec2(256, -256)));
+	//color = (texture(ourTexture, TexCoord) * i / 5) + 0.05; 
+	color = mix(texture(ourTexture, TexCoord), texture(ourTexture2, TexCoord), 0.3) * i * vec4(fs_in.col, 1.0);
+	//color = i * vec4(fs_in.col, 1.0);
+	  
  
 }

@@ -47,6 +47,22 @@ namespace Ionic { namespace Math
 		return *this;
 	}
 
+	float vec2::Dot(const vec2& other) const
+	{
+		return x * other.x + y * other.y;
+	}
+
+	vec2 vec2::Normalise() const
+	{
+		float length = Magnitude();
+		return vec2(x / length, y / length);
+	}
+
+	float vec2::Magnitude() const
+	{
+		return sqrt(x * x + y * y);
+	}
+
 	vec2 operator+(vec2 left, const vec2& right)
 	{
 		return left.Add(right);

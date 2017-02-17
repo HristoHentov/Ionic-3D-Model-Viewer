@@ -53,6 +53,63 @@ namespace Ionic { namespace Math
 		return *this;
 	}
 
+	vec3& vec3::Add(float other)
+	{
+		x += other;
+		y += other;
+		z += other;
+
+		return *this;
+	}
+
+	vec3& vec3::Subtract(float other)
+	{
+		x -= other;
+		y -= other;
+		z -= other;
+
+		return *this;
+	}
+
+	vec3& vec3::Multiply(float other)
+	{
+		x *= other;
+		y *= other;
+		z *= other;
+
+		return *this;
+	}
+
+	vec3& vec3::Divide(float other)
+	{
+		x /= other;
+		y /= other;
+		z /= other;
+
+		return *this;
+	}
+
+	float vec3::Magnitude() const
+	{
+		return sqrt(x * x + y * y + z * z);
+	}
+
+	float vec3::Dot(const vec3& other) const
+	{
+		return x * other.x + y * other.y + z * other.z;
+	}
+
+	vec3 vec3::Cross(const vec3& other) const
+	{
+		return vec3(y * other.z - z * other.y, z * other.x - x * other.z, x * other.y - y * other.x);
+	}
+
+	vec3 vec3::Normalize() const
+	{
+		float length = Magnitude();
+		return vec3(x / length, y / length, z / length);
+	}
+
 	vec3 operator+(vec3 left, const vec3& right)
 	{
 		return left.Add(right);
@@ -73,6 +130,27 @@ namespace Ionic { namespace Math
 		return left.Divide(right);
 	}
 
+	vec3 operator+(vec3 left, float right)
+	{
+		return left.Add(right);
+	}
+
+	vec3 operator-(vec3 left, float right)
+	{
+		return left.Subtract(right);
+	}
+
+	vec3 operator*(vec3 left, float right)
+	{
+		return left.Multiply(right);
+	}
+
+	vec3 operator/(vec3 left, float right)
+	{
+		return left.Divide(right);
+	}
+	
+
 	vec3& vec3::operator+=(const vec3& other)
 	{
 		return this->Add(other);
@@ -91,6 +169,29 @@ namespace Ionic { namespace Math
 	vec3& vec3::operator/=(const vec3& other)
 	{
 		return this->Divide(other);
+	}
+
+	vec3& vec3::operator+=(float other)
+	{
+		return Add(other);
+	}
+
+	vec3& vec3::operator-=(float other)
+	{
+		return Subtract(other);
+
+	}
+
+	vec3& vec3::operator*=(float other)
+	{
+		return Multiply(other);
+
+	}
+
+	vec3& vec3::operator/=(float other)
+	{
+		return Divide(other);
+
 	}
 
 	bool vec3::operator==(const vec3& other)

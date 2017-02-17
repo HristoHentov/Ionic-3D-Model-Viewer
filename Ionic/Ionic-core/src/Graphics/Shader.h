@@ -26,6 +26,7 @@ namespace Ionic { namespace Graphics {
 			void setUniformMat4(const GLchar* uName, const Math::mat4& data) const;
 
 			~Shader();
+			GLuint _programID;
 
 		private:
 			void BuildShader(GLuint shaderID, const char * path, const char * source, char * errorMessage);
@@ -36,6 +37,5 @@ namespace Ionic { namespace Graphics {
 			const char * _fPath;
 			GLuint _vShaderID;
 			GLuint _fShaderID;
-			GLuint _programID;
 		};
 }}

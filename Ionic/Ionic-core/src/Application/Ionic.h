@@ -11,9 +11,11 @@
 #include "../Input/InputManager.h"
 #include "../Graphics/Window.h"
 #include "../Graphics/Shader.h"
+#include "../Graphics/Model.h"
 #include "../Graphics/Buffer.h"
 #include "../Graphics/VertexArray.h"
 #include "../Graphics/IndexBuffer.h"
+#include "SOIL/SOIL.h"
 
 namespace Ionic { namespace Application {
 		using namespace Graphics;
@@ -26,6 +28,7 @@ namespace Ionic { namespace Application {
 			Ionic();
 			void Initialize();
 			void Run();
+
 			~Ionic();
 
 		private:

@@ -11,10 +11,10 @@ namespace Ionic { namespace Graphics {
 		void VertexArray::Add(Buffer* buffer, GLuint index)
 		{
 			Bind();
-			buffer->Enable();
-			glVertexAttribPointer(index, buffer->GetComponentCount(), GL_FLOAT, GL_FALSE,0, 0);
+			//buffer->Enable();
+			glVertexAttribPointer(index, buffer->GetComponentCount(), GL_FLOAT, GL_FALSE,3 * sizeof(GLfloat), 0);
 			glEnableVertexAttribArray(index);
-			///TODO : Push buffers into the vector
+			_buffers.push_back(buffer);
 			buffer->Disable();
 			Unbind();
 		}
@@ -31,10 +31,10 @@ namespace Ionic { namespace Graphics {
 
 		VertexArray::~VertexArray()
 		{
-			for (int i = 0; i < _buffers.size(); i++)
-			{
+			for (unsigned int i = 0; i < _buffers.size(); i++)
 				delete _buffers[i];
-			}
+
+			glDeleteVertexArrays(1, &_arrayID);
 		}
 	}
 }

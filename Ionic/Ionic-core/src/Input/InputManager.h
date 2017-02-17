@@ -13,14 +13,17 @@ namespace Ionic { namespace Input
 		
 		static bool IsKeyPressed(int keycode);
 		static bool IsMousePressed(int keycode);
+		inline static void ResetScroll() { _scrollY = 0; }
 		static double GetScrollOffset();
 		static Math::vec2 GetMousePosition();
+		static bool MouseMoved();
 
 	private:
 		static bool _keys[TOTAL_KEYS];
 		static bool _buttons[TOTAL_BUTTONS];
 		static double _mouseX, _mouseY;
 		static double _scrollY;
+		static bool _mouseMoved;
 	private:
 		friend class Graphics::Window;
 	private:

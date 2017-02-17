@@ -28,7 +28,7 @@ namespace Ionic { namespace Math {
 			static mat4 Identity();
 			mat4& Inverse();
 
-
+			static mat4 LookAt(const vec3& camera, const vec3& object, const vec3& up);
 			static mat4 Perspective(float near, float far, float fov, float aspectRatio);
 			static mat4 Ortographic(float near, float far, float left, float right, float top, float bottom);
 

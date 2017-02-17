@@ -1,11 +1,13 @@
 #pragma once
 #include <GLEW/glew.h>
-
+#include <vector>
+#include "../Math/vec3.h"
 namespace Ionic { namespace Graphics {
 class Buffer
 {
 public:
 	Buffer(GLfloat * data, GLshort componentCount, GLsizei size);
+	Buffer(std::vector<Math::vec3> * data, GLshort componentCount, GLsizei size);
 	
 	void Enable() const;
 	void Disable() const;

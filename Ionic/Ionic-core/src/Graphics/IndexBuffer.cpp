@@ -6,13 +6,22 @@ namespace Ionic { namespace Graphics {
 		{
 		}
 
-		IndexBuffer::IndexBuffer(GLushort * data, GLushort size)
+		IndexBuffer::IndexBuffer(GLuint  * data, GLushort size)
 			:_size(size)
 		{
 			glGenBuffers(1, &_bufferID);
 			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _bufferID);
-			glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLushort) * size, data, GL_STATIC_DRAW);
-			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+			glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLuint) * size, data, GL_STATIC_DRAW);
+			//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+		}
+
+		IndexBuffer::IndexBuffer(std::vector<unsigned int> * data, GLushort size)
+			:_size(size)
+		{
+			glGenBuffers(1, &_bufferID);
+			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _bufferID);
+			glBufferData(GL_ELEMENT_ARRAY_BUFFER, 4 * size, &data, GL_STATIC_DRAW);
+			//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 		}
 
 		void IndexBuffer::Enable() const
@@ -33,7 +42,7 @@ namespace Ionic { namespace Graphics {
 
 		IndexBuffer::~IndexBuffer()
 		{
-
+			glDeleteBuffers(1, &_bufferID);
 		}
 	}
 }
