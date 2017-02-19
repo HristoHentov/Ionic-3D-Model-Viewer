@@ -1,5 +1,4 @@
 #include "Window.h"
-#include "../Input/InputManager.h"
 
 
 namespace Ionic { namespace Graphics {
@@ -50,15 +49,25 @@ namespace Ionic { namespace Graphics {
 				return false;
 			}
 
+			glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+			glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+			glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+			glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
+
+
 			//glViewport(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
 
 			glfwMakeContextCurrent(_window);
 			glfwSetWindowUserPointer(_window, this);
 
+			glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+			glfwSwapInterval(0);
 			glEnable(GL_DEPTH_TEST);
 			//glEnable(GL_CULL_FACE);
 			//glCullFace(GL_BACK);
 			//glDepthFunc(GL_LESS);
+
+
 			
 			glfwSetKeyCallback(_window, Input::InputManager::KeyCallback);
 			glfwSetCursorPosCallback(_window, Input::InputManager::MousePositionCallback);

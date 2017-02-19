@@ -19,9 +19,5 @@ void main()
 {
 
 	float i = 2 / length(fs_in.pos.xy - ((mouse_pos - vec2(256, 256)) / vec2(256, -256)));
-	//color = (texture(ourTexture, TexCoord) * i / 5) + 0.05; 
 	color = mix(texture(ourTexture, TexCoord), texture(ourTexture2, TexCoord), 0.3) * i * vec4(fs_in.col, 1.0);
-	//color = i * vec4(fs_in.col, 1.0);
-	  
- 
 }

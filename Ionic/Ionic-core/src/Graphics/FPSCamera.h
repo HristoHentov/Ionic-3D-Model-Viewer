@@ -1,9 +1,7 @@
 #include "Camera.h"
-#include "glm/glm.hpp"
-#include "glm/trigonometric.hpp"
-#include "glm/common.hpp"
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+#include "../Input/InputManager.h"
 
 namespace Ionic {
 	namespace Graphics {

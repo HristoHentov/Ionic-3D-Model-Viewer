@@ -27,7 +27,6 @@ namespace Ionic { namespace Graphics {
 			glBindBuffer(GL_ARRAY_BUFFER, _bufferID);
 		}
 
-
 		void Buffer::Disable() const
 		{
 			glBindBuffer(GL_ARRAY_BUFFER, 0);

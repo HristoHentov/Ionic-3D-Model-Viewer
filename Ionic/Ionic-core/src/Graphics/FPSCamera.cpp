@@ -1,5 +1,4 @@
 #include "FPSCamera.h"
-#include "../Input/InputManager.h"
 
 namespace Ionic {
 	namespace Graphics {
@@ -25,43 +24,52 @@ namespace Ionic {
 
 		void FPSCamera::Update(GLfloat time)
 		{
-			if (Input::InputManager::MouseMoved())
+			if (Input::InputManager::IsMousePressed(GLFW_MOUSE_BUTTON_1))
 			{
-				if (firstMouse)
+				if (Input::InputManager::MouseMoved())
 				{
+					if (firstMouse)
+					{
+						lastX = Input::InputManager::GetMousePosition().x;
+						lastY = Input::InputManager::GetMousePosition().y;
+						firstMouse = false;
+					}
+
+					GLfloat xoffset = Input::InputManager::GetMousePosition().x - lastX;
+					GLfloat yoffset = lastY - Input::InputManager::GetMousePosition().y; // Reversed since y-coordinates go from bottom to left
 					lastX = Input::InputManager::GetMousePosition().x;
 					lastY = Input::InputManager::GetMousePosition().y;
-					firstMouse = false;
+
+					GLfloat sensitivity = 0.15;	// Change this value to your liking
+					xoffset *= sensitivity;
+					yoffset *= sensitivity;
+
+					yaw += xoffset;
+					pitch += yoffset;
+
+					if (pitch > 89.0f)
+						pitch = 89.0f;
+					if (pitch < -89.0f)
+						pitch = -89.0f;
+
+					float rYaw = yaw * (3.1415f / 180.0f);
+					float rPitch = pitch * (3.1415f / 180.0f);
+					Math::vec3 front;
+
+					front.x = cos(rYaw) * cos(rPitch);
+					front.y = sin(rPitch);
+					front.z = sin(rYaw) * cos(rPitch);
+					camDirection = front.Normalize();
 				}
+				
 
-				GLfloat xoffset = Input::InputManager::GetMousePosition().x - lastX;
-				GLfloat yoffset = lastY - Input::InputManager::GetMousePosition().y; // Reversed since y-coordinates go from bottom to left
-				lastX = Input::InputManager::GetMousePosition().x;
-				lastY = Input::InputManager::GetMousePosition().y;
-
-				GLfloat sensitivity = 0.15;	// Change this value to your liking
-				xoffset *= sensitivity;
-				yoffset *= sensitivity;
-
-				yaw += xoffset;
-				pitch += yoffset;
-
-				if (pitch > 89.0f)
-					pitch = 89.0f;
-				if (pitch < -89.0f)
-					pitch = -89.0f;
-
-				float rYaw = yaw * (3.1415f / 180.0f);
-				float rPitch = pitch * (3.1415f / 180.0f);
-				Math::vec3 front;
-
-				front.x = cos(rYaw) * cos(rPitch);
-				front.y = sin(rPitch);
-				front.z = sin(rYaw) * cos(rPitch);
-				camDirection = front.Normalize();
 			}
 
-
+			else
+			{
+				lastX = Input::InputManager::GetMousePosition().x;
+				lastY = Input::InputManager::GetMousePosition().y;
+			}
 			float deltaTime = time - _lastUpdateTime;
 
 			if (Input::InputManager::IsKeyPressed(GLFW_KEY_A))
