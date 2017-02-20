@@ -15,6 +15,8 @@ namespace Ionic {
 			Math::mat4 GetProjection() override;
 			void Update(GLfloat time) override;
 			glm::mat4 test;
+
+			inline Math::vec3 GetPosition() const { return camPosition; };
 		private:
 			float _x, _y, _z;
 			float _speed;

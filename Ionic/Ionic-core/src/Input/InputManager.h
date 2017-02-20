@@ -1,8 +1,9 @@
 #pragma once
 #include "../IonicDefinitions.h"
-#include "../Graphics/Window.h"
 #include "../Math/vec2.h"
 #include <string>
+#include "../Graphics/Window.h"
+
 
 namespace Ionic { namespace Input
 {

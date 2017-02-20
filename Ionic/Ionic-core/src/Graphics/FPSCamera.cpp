@@ -4,10 +4,10 @@ namespace Ionic {
 	namespace Graphics {
 
 		FPSCamera::FPSCamera(float sensitivity, float near, float far, float fov, float aspectRatio)
-			:_x(0), _y(0), _z(0), _speed(sensitivity / 100.0f), _lastUpdateTime(0), yaw(-90.0f), pitch(0.0f), lastX(WINDOW_WIDTH / 2), lastY(WINDOW_WIDTH / 2)
+			:_x(0), _y(0), _z(0), _speed(sensitivity / 100), _lastUpdateTime(0), yaw(-90.0f), pitch(0.0f), lastX(WINDOW_WIDTH / 2), lastY(WINDOW_WIDTH / 2)
 		{
 			camDirection = Math::vec3(0.0f, 0.0f, -1.0f);
-			camPosition = Math::vec3(0.0f, 0.0f, 10.0f);
+			camPosition = Math::vec3(0.0f, 8.0f, 20.0f);
 			camUp = Math::vec3(0.0f, 1.0f, 0.0f);
 			this->_projectionMatrix = Math::mat4::Perspective(near, far, fov, aspectRatio);
 		}
@@ -110,6 +110,7 @@ namespace Ionic {
 					_z -= _speed * 50;
 
 				Input::InputManager::ResetScroll();
+				_lastUpdateTime = time;
 			}
 
 

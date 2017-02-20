@@ -174,10 +174,6 @@
       <Project>{35bfe4c3-e219-4e81-9064-b9a2a9feb882}</Project>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Text Include="src\Graphics\fShader.txt" />
-    <Text Include="src\Graphics\vShader.txt" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

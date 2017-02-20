@@ -7,6 +7,8 @@ namespace Ionic { namespace Graphics {
 		:Vertices(vertices),Indices(indices),Textures(textures)
 	{
 		this->BuildMesh();
+		std::cout << "Mesh Loaded! V: " << Vertices.size() << " I: " << Indices.size() << std::endl;
+		std::cout << "Texutes: " << Textures.size() << std::endl;
 	}
 
 	void Mesh::BuildMesh()
@@ -18,7 +20,7 @@ namespace Ionic { namespace Graphics {
 
 		glBindVertexArray(this->VAO);
 
-		glBindBuffer(GL_ARRAY_BUFFER, VAO);
+		glBindBuffer(GL_ARRAY_BUFFER, VBO);
 		glBufferData(GL_ARRAY_BUFFER, this->Vertices.size() * sizeof(Vertex), &this->Vertices[0], GL_STATIC_DRAW);
 
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);

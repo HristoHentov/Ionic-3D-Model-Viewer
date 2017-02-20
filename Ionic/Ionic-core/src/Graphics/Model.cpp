@@ -6,6 +6,7 @@ namespace Ionic {
 		Model::Model(GLchar* path)
 		{
 			this->loadModel(path);
+			std::cout << "Meshes " << meshes.size() << std::endl;
 		}
 
 		void Model::Render(Shader shader)
@@ -19,13 +20,15 @@ namespace Ionic {
 		void Model::loadModel(std::string path)
 		{
 			Assimp::Importer importer;
-			const aiScene* scene = importer.ReadFile(path, aiProcess_Triangulate | aiProcess_FlipUVs | aiProcess_GenNormals);
+			const aiScene* scene = importer.ReadFile(path, aiProcess_Triangulate | aiProcess_FlipUVs | aiProcess_GenNormals | aiProcess_SplitLargeMeshes);
 
 			if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
 			{
 				std::cout << "ERROR! Assimp: " << importer.GetErrorString() << std::endl;
 				return;
 			}
+			std::string objectName = path.substr(path.find_last_of('/') + 1, path.size() - (5 + path.find_last_of('/')));
+			std::cout << "Model \"" << objectName << "\" succesfully loaded!" << std::endl;
 
 			this->directory = path.substr(0, path.find_last_of('/'));
 			this->processNode(scene->mRootNode, scene);
@@ -72,7 +75,7 @@ namespace Ionic {
 					indices.push_back(face.mIndices[c]);
 			}
 
-			if(mesh->mMaterialIndex >= 0)
+			if (mesh->mMaterialIndex >= 0)
 			{
 				aiMaterial * material = scene->mMaterials[mesh->mMaterialIndex];
 
@@ -106,7 +109,7 @@ namespace Ionic {
 					}
 				}
 
-				if(!skip)
+				if (!skip)
 				{
 					Texture texture;
 					texture.Id = texFromFile(str.C_Str(), this->directory);

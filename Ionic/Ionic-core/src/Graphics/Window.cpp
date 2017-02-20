@@ -1,5 +1,5 @@
 #include "Window.h"
-
+#include "../Input/InputManager.h"
 
 namespace Ionic { namespace Graphics {
 		Window::Window(int width, int height, const char * title)
@@ -60,7 +60,6 @@ namespace Ionic { namespace Graphics {
 			glfwMakeContextCurrent(_window);
 			glfwSetWindowUserPointer(_window, this);
 
-			glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 			glfwSwapInterval(0);
 			glEnable(GL_DEPTH_TEST);
 			//glEnable(GL_CULL_FACE);

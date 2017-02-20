@@ -45,8 +45,4 @@
     <ClInclude Include="src\Graphics\Camera.h" />
     <ClInclude Include="src\Graphics\FPSCamera.h" />
   </ItemGroup>
-  <ItemGroup>
-    <Text Include="src\Graphics\fShader.txt" />
-    <Text Include="src\Graphics\vShader.txt" />
-  </ItemGroup>
 </Project>
