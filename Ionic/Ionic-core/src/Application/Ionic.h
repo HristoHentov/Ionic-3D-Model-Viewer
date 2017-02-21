@@ -11,7 +11,11 @@
 #include "../Graphics/Shader.h"
 #include "../Graphics/Model.h"
 #include "../Utils/FPSCounter.h"
-#include "../Graphics/FPSCamera.h"
+#include "../Entities/FPSCamera.h"
+#include "../Entities/Light.h"
+#include "../Utils/Config.h"
+
+
 
 namespace Ionic { namespace Application {
 		using namespace Graphics;
@@ -31,7 +35,7 @@ namespace Ionic { namespace Application {
 			Window* _appWindow;
 			ConsoleLogger _cLogger;
 			Logger * _logger;
-			Shader * _shader;
+			Utils::Config _config;
 		};
 
 	}

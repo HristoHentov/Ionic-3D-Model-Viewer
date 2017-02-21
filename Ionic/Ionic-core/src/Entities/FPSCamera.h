@@ -1,10 +1,12 @@
+#pragma once
+
 #include "Camera.h"
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include "../Input/InputManager.h"
 
 namespace Ionic {
-	namespace Graphics {
+	namespace Entities {
 
 		class FPSCamera : Camera
 		{
@@ -17,6 +19,7 @@ namespace Ionic {
 			glm::mat4 test;
 
 			inline Math::vec3 GetPosition() const { return camPosition; };
+			inline Math::vec3 GetDirection() const { return camDirection; };
 		private:
 			float _x, _y, _z;
 			float _speed;

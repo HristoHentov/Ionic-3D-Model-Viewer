@@ -16,6 +16,9 @@ namespace Ionic { namespace Graphics {
 		{
 			glfwSwapBuffers(_window);
 			glfwPollEvents();
+
+			if (glfwWindowShouldClose(_window))
+				this->_closed = true;
 		}
 
 		void Window::Clear()
@@ -54,19 +57,13 @@ namespace Ionic { namespace Graphics {
 			glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 			glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
-
 			//glViewport(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
 
 			glfwMakeContextCurrent(_window);
 			glfwSetWindowUserPointer(_window, this);
 
-			glfwSwapInterval(0);
+			//glfwSwapInterval(0);
 			glEnable(GL_DEPTH_TEST);
-			//glEnable(GL_CULL_FACE);
-			//glCullFace(GL_BACK);
-			//glDepthFunc(GL_LESS);
-
-
 			
 			glfwSetKeyCallback(_window, Input::InputManager::KeyCallback);
 			glfwSetCursorPosCallback(_window, Input::InputManager::MousePositionCallback);

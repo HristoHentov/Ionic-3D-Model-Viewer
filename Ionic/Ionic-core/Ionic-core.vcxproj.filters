@@ -19,7 +19,9 @@
     <ClCompile Include="src\Utils\FPSCounter.cpp" />
     <ClCompile Include="src\Graphics\Mesh.cpp" />
     <ClCompile Include="src\Graphics\Model.cpp" />
-    <ClCompile Include="src\Graphics\FPSCamera.cpp" />
+    <ClCompile Include="src\Entities\FPSCamera.cpp" />
+    <ClCompile Include="src\Entities\Light.cpp" />
+    <ClCompile Include="src\Utils\Config.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Graphics\Window.h" />
@@ -42,7 +44,20 @@
     <ClInclude Include="src\Utils\FPSCounter.h" />
     <ClInclude Include="src\Graphics\Mesh.h" />
     <ClInclude Include="src\Graphics\Model.h" />
-    <ClInclude Include="src\Graphics\Camera.h" />
-    <ClInclude Include="src\Graphics\FPSCamera.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="src\Entities\FPSCamera.h" />
+    <ClInclude Include="src\Entities\Camera.h" />
+    <ClInclude Include="src\Entities\Light.h" />
+    <ClInclude Include="src\Utils\Config.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Ionic-core.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\cubeIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\frag.fs" />
+    <None Include="res\vert.vs" />
   </ItemGroup>
 </Project>

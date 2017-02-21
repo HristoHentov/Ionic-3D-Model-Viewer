@@ -2,10 +2,11 @@
 #include <GLEW/glew.h>
 #include "../Math/mat4.h"
 
-namespace Ionic { namespace Graphics {
+namespace Ionic {
+	namespace Entities {
 
-	class Camera
-	{
+		class Camera
+		{
 		public:
 
 			virtual Math::mat4 GetProjection() = 0;
@@ -14,10 +15,10 @@ namespace Ionic { namespace Graphics {
 
 			virtual ~Camera() {};
 
-	protected:
-		Math::mat4 _projectionMatrix;
-		Math::mat4 _viewMatrix;
-		
-	};
-}
+		protected:
+			Math::mat4 _projectionMatrix;
+			Math::mat4 _viewMatrix;
+
+		};
+	}
 }

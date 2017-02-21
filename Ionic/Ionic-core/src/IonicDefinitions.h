@@ -36,6 +36,7 @@
 /* Convention String */
 #define DIFF_TEX_CONVENTION	"texture_diffuse"
 #define SPEC_TEX_CONVENTION	"texture_specular"
+#define IONIC_CFGFILE		"Ionic.cfg"
 /* END */
 
 

@@ -75,13 +75,14 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <IncludePath>$(SolutionDir)Dependencies\include\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Dependencies\lib;$(LibraryPath)</LibraryPath>
+    <TargetName>Ionic3D</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>GLEW_STATIC;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>GLEW_STATIC;_CRT_SECURE_NO_WARNINGS;DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalDependencies>glfw3.lib;opengl32.lib;glew32s.lib;SOIL.lib;assimp-vc140-mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -104,6 +105,9 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>GLEW_STATIC;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DebugInformationFormat>None</DebugInformationFormat>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -125,7 +129,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\Graphics\FPSCamera.cpp" />
+    <ClCompile Include="src\Utils\Config.cpp" />
+    <ClCompile Include="src\Entities\FPSCamera.cpp" />
+    <ClCompile Include="src\Entities\Light.cpp" />
     <ClCompile Include="src\Graphics\Mesh.cpp" />
     <ClCompile Include="src\Graphics\Model.cpp" />
     <ClCompile Include="src\Utils\FPSCounter.cpp" />
@@ -146,8 +152,11 @@
     <ClCompile Include="src\Graphics\VertexArray.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Graphics\Camera.h" />
-    <ClInclude Include="src\Graphics\FPSCamera.h" />
+    <ClInclude Include="src\Utils\Config.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="src\Entities\Camera.h" />
+    <ClInclude Include="src\Entities\FPSCamera.h" />
+    <ClInclude Include="src\Entities\Light.h" />
     <ClInclude Include="src\Graphics\Mesh.h" />
     <ClInclude Include="src\Graphics\Model.h" />
     <ClInclude Include="src\Utils\FPSCounter.h" />
@@ -173,6 +182,16 @@
     <ProjectReference Include="..\Ionic-fileloader\Ionic-fileloader.vcxproj">
       <Project>{35bfe4c3-e219-4e81-9064-b9a2a9feb882}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Ionic-core.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\cubeIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\frag.fs" />
+    <None Include="res\vert.vs" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

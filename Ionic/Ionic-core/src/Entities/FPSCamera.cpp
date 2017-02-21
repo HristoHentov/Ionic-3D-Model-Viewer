@@ -1,10 +1,10 @@
 #include "FPSCamera.h"
 
 namespace Ionic {
-	namespace Graphics {
+	namespace Entities {
 
-		FPSCamera::FPSCamera(float sensitivity, float near, float far, float fov, float aspectRatio)
-			:_x(0), _y(0), _z(0), _speed(sensitivity / 100), _lastUpdateTime(0), yaw(-90.0f), pitch(0.0f), lastX(WINDOW_WIDTH / 2), lastY(WINDOW_WIDTH / 2)
+		Entities::FPSCamera::FPSCamera(float sensitivity, float near, float far, float fov, float aspectRatio)
+			:_x(0), _y(0), _z(0), _speed(sensitivity), _lastUpdateTime(0), yaw(-90.0f), pitch(0.0f), lastX(WINDOW_WIDTH / 2), lastY(WINDOW_WIDTH / 2)
 		{
 			camDirection = Math::vec3(0.0f, 0.0f, -1.0f);
 			camPosition = Math::vec3(0.0f, 8.0f, 20.0f);
@@ -24,6 +24,8 @@ namespace Ionic {
 
 		void FPSCamera::Update(GLfloat time)
 		{
+			float deltaTime = time - _lastUpdateTime;
+
 			if (Input::InputManager::IsMousePressed(GLFW_MOUSE_BUTTON_1))
 			{
 				if (Input::InputManager::MouseMoved())
@@ -61,7 +63,7 @@ namespace Ionic {
 					front.z = sin(rYaw) * cos(rPitch);
 					camDirection = front.Normalize();
 				}
-				
+
 
 			}
 
@@ -70,28 +72,27 @@ namespace Ionic {
 				lastX = Input::InputManager::GetMousePosition().x;
 				lastY = Input::InputManager::GetMousePosition().y;
 			}
-			float deltaTime = time - _lastUpdateTime;
 
 			if (Input::InputManager::IsKeyPressed(GLFW_KEY_A))
 			{
 				_x += _speed * deltaTime;
-				camPosition -= camDirection.Cross(camUp).Normalize() * _speed;
+				camPosition -= camDirection.Cross(camUp).Normalize() * _speed * deltaTime;
 			}
 			if (Input::InputManager::IsKeyPressed(GLFW_KEY_D))
 			{
 				_x -= _speed * deltaTime;
-				camPosition += camDirection.Cross(camUp).Normalize() * _speed;
+				camPosition += camDirection.Cross(camUp).Normalize() * _speed * deltaTime;
 			}
 			if (Input::InputManager::IsKeyPressed(GLFW_KEY_W))
 			{
 				_y -= _speed * deltaTime;
-				camPosition += camDirection * _speed;
+				camPosition += camDirection * _speed * deltaTime;
 
 			}
 			if (Input::InputManager::IsKeyPressed(GLFW_KEY_S))
 			{
 				_y += _speed * deltaTime;
-				camPosition -= camDirection * _speed;
+				camPosition -= camDirection * _speed * deltaTime;
 
 			}
 			if (Input::InputManager::IsKeyPressed(GLFW_KEY_Q))
@@ -110,11 +111,11 @@ namespace Ionic {
 					_z -= _speed * 50;
 
 				Input::InputManager::ResetScroll();
-				_lastUpdateTime = time;
 			}
 
 
 
+			_lastUpdateTime = time;
 
 			//this->_viewMatrix = Math::mat4::Translation(Math::vec3(_x, _y, _z));
 
