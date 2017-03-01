@@ -4,9 +4,9 @@ A lightweight 3D Model viewer written in C++ using OpenGL.
 
 
 <br>
-<a href="https://imgbb.com/"><img src="https://image.ibb.co/gpQj6F/icon64.png" alt="icon64" border="0" /></a>
+<img src="https://image.ibb.co/gpQj6F/icon64.png" alt="icon64" border="0" />
 </br>
-You can download the binary [Here](https://drive.google.com/file/d/0BxEHvcN2EPVHX1I3QXJyd1VDaG8/view?usp=sharing)
+You can download the binary [Here](https://drive.google.com/uc?export=download&id=0BxEHvcN2EPVHX1I3QXJyd1VDaG8)
 
 # Configuration
 
