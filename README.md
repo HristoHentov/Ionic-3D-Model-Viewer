@@ -1,6 +1,6 @@
 # Ionic 3D
 
-A lightweight 3D Model viewer written in C++ using OpenGL.
+A lightweight 3D Model viewer written in C++ using OpenGL
 
 
 <br>
